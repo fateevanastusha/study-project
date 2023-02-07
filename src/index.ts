@@ -1,4 +1,4 @@
-import express, {application, Request, Response} from 'express'
+import express, {application, NextFunction, Request, Response} from 'express'
 import { request } from 'http'
 import { send } from 'process'
 import bodyParser from "body-parser"
@@ -15,12 +15,11 @@ app.use('/products', productsRouter)
 app.use('/addresses', addressesRouter)
 
 const tests = [{id:1, title:"test1"},{id:2,title:"test2"}]
-app.get('/tests',(req:Request, res:Response) =>{
+app.get('/tests', (req:Request, res:Response) => {
     res.send(tests)
 })
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+//start app
+app.listen(port, () => {    console.log(`Example app listening on port ${port}`)
 })
 
 

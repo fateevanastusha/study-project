@@ -16,6 +16,7 @@ const tests = [{ id: 1, title: "test1" }, { id: 2, title: "test2" }];
 exports.app.get('/tests', (req, res) => {
     res.send(tests);
 });
+//start app
 exports.app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
