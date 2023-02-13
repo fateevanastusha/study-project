@@ -7,7 +7,7 @@ export type ProductType = {
 }
 
 export const productsInMemoryRepository = {
-    getAllProducts(){
+    async getAllProducts() : Promise<ProductType[]>{
       return products
     },
     async findProducts(title: string | undefined | null) : Promise <ProductType []> {
@@ -30,7 +30,7 @@ export const productsInMemoryRepository = {
         products.push(newProduct)
         return newProduct
     },
-    updateProduct(id: number, title: string){
+    async updateProduct(id: number, title: string) : Promise<boolean>{
         let product = products.find(p => p.id === id);
         if (product) {
             product.title = title;
@@ -39,7 +39,7 @@ export const productsInMemoryRepository = {
             return false;
         };
     },
-    deleteProduct(id: number){
+    async deleteProduct(id: number) : Promise<boolean>{
     for (let i = 0; i<products.length; i++){
         if (products[i].id === id){
             products.splice(i,1);
